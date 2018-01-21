@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block head_title %}
+{{ title }}
+{% endblock head_title %}
+{% block content %}
+<title>Input List</title>
+{% for c in input_details %}
+	<h4><a href='/input_details/{{ c.id }}/'>{{ c.input_text }}</a></h4><br>
+{% endfor %}
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block head_title %}
+{{ title }}
+{% endblock head_title %}
+{% block content %}
+<title>{{ input_detail.id }}</title>
+<h2>{{ input_detail.input_text }}</h2>
+{% if request.user.is_staff and not input_detail.permission %}
+	<form method="POST" action='/api/update_permission/'>{% csrf_token %}
+		<input type="text" name="id" value="{{ input_detail.id }}" hidden>
+		<input type="submit" value="Update Permission" class="btn btn-success">
+	</form>
+{% endif %}
+
+{% endblock content %}
